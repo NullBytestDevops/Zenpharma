@@ -18,7 +18,7 @@ module "vpc" {
   database_subnet_cidrs = ["10.0.5.0/24", "10.0.6.0/24"]
 }
 module "eks" {
-  source = "./modules/eks"
+  source = "./module/eks"
 
   project            = local.project
   env                = local.env
@@ -32,7 +32,7 @@ module "eks" {
 }
 
 module "rds" {
-  source = "./modules/rds"
+  source = "./module/rds"
 
   project                    = local.project
   env                        = local.env
@@ -44,7 +44,7 @@ module "rds" {
 }
 
 module "ecr" {
-  source = "./modules/ecr"
+  source = "./module/ecr"
 
   project = local.project
   env     = local.env
@@ -62,7 +62,7 @@ module "ecr" {
 }
 
 module "iam" {
-  source = "./modules/iam"
+  source = "./module/iam"
 
   project           = local.project
   env               = local.env
@@ -73,7 +73,7 @@ module "iam" {
 }
 
 module "secrets_manager" {
-  source = "./modules/secrets-manager"
+  source = "./module/secrets-manager"
 
   project     = local.project
   env         = local.env

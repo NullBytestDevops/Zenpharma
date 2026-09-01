@@ -6,7 +6,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 6.0"
     }
-  
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "~> 3.0"
@@ -20,14 +19,16 @@ terraform {
 
 provider "aws" {
   region = "us-east-1"
+
   default_tags {
     tags = {
       Project   = "pharma"
       Env       = "dev"
-      ManagedBy = "Terraform"
+      ManagedBy = "terraform"
     }
   }
 }
+
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
